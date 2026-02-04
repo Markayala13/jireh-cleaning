@@ -1,0 +1,20 @@
+{
+  "buildCommand": "echo 'No build needed'",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    {
+      "src": "^/nc-cleaning/(.*)",
+      "dest": "/nc-cleaning/$1"
+    },
+    {
+      "src": "^/(pics|videos|logo.*)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/nc-cleaning/index.html"
+    }
+  ]
+}
