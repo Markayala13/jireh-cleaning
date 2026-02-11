@@ -1247,7 +1247,7 @@ body::after {
   background: var(--negro);
   box-shadow: var(--shadow-card);
   transition: var(--transition);
-  aspect-ratio: 9/16;
+  aspect-ratio: 1/1;
 }
 .video-item:hover {
   transform: translateY(-8px);
@@ -1258,6 +1258,12 @@ body::after {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+.video-item iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
 }
 .video-item-overlay {
   position: absolute;
@@ -1284,13 +1290,103 @@ body::after {
     gap: 16px;
   }
   .video-item {
-    aspect-ratio: 9/16;
+    aspect-ratio: 1/1;
   }
 }
 @media (max-width: 480px) {
   .videos-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ═══════════════════════════════════════════
+   BEFORE & AFTER CAROUSEL
+   ═══════════════════════════════════════════ */
+.before-after-section {
+  background: linear-gradient(180deg, var(--blanco) 0%, var(--rosa-bg) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.ba-carousel {
+  position: relative;
+  margin-top: 20px;
+  overflow: hidden;
+}
+.ba-carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  gap: 20px;
+}
+.ba-carousel-slide {
+  min-width: calc(33.333% - 14px);
+  flex-shrink: 0;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #f5f5f5;
+  box-shadow: var(--shadow-card);
+  aspect-ratio: 9/16;
+}
+.ba-carousel-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+.ba-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  z-index: 10;
+  transition: var(--transition);
+}
+.ba-carousel-btn:hover {
+  background: var(--rosa);
+  color: white;
+}
+.ba-carousel-btn:hover svg { stroke: white; }
+.ba-carousel-btn.prev { left: 10px; }
+.ba-carousel-btn.next { right: 10px; }
+.ba-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+.ba-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(201,66,119,0.25);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.ba-carousel-dot.active {
+  background: var(--rosa);
+  transform: scale(1.3);
+}
+@media (max-width: 768px) {
+  .ba-carousel-slide {
+    min-width: calc(50% - 10px);
+  }
+}
+@media (max-width: 480px) {
+  .ba-carousel-slide {
+    min-width: 100%;
+  }
+  .ba-carousel-btn { width: 38px; height: 38px; }
 }
 
 /* ═══════════════════════════════════════════
@@ -2346,16 +2442,50 @@ body::after {
     </div>
     <div class="videos-grid">
       <div class="video-item reveal-scale delay-1">
-        <video src="../videos/AQMPthWsHbDOfUkPizBLuj6rfpyFHqcngzRAQ0b1Xdyb8O3V4SS44hnedItB4dFfjbNSq_QOlLxryvyX6a7bb_yGHhaK5l_sH0iqsL42ygnAxw.mp4" controls preload="metadata" playsinline></video>
+        <video src="../videos/AQMPthWsHbDOfUkPizBLuj6rfpyFHqcngzRAQ0b1Xdyb8O3V4SS44hnedItB4dFfjbNSq_QOlLxryvyX6a7bb_yGHhaK5l_sH0iqsL42ygnAxw.mp4#t=0.001" controls preload="metadata" playsinline></video>
       </div>
       <div class="video-item reveal-scale delay-2">
-        <video src="../videos/AQN-j7poVyAfyUthyJqMY9bACi2FD0S_8EEd4kE8jUqVV_kktabJW6EuK2-uiqEJRC33HeGeTQUbN4K6rZ6CH1uKxA6-4yIhhrciAq84YftUZA.mp4" controls preload="metadata" playsinline></video>
+        <video src="../videos/AQN-j7poVyAfyUthyJqMY9bACi2FD0S_8EEd4kE8jUqVV_kktabJW6EuK2-uiqEJRC33HeGeTQUbN4K6rZ6CH1uKxA6-4yIhhrciAq84YftUZA.mp4#t=0.001" controls preload="metadata" playsinline></video>
       </div>
       <div class="video-item reveal-scale delay-3">
-        <video src="../videos/AQPHTBV7u9TkwLlfFGbUcurPiv4ggHZjRNR8jBkJmYs3hpX_ZFlCo3mt4cXLPug43qb0GLNwGwWJMESl-esPpW3ZnOX41d0fI5HNqrMylqXIug.mp4" controls preload="metadata" playsinline></video>
+        <video src="../videos/AQPHTBV7u9TkwLlfFGbUcurPiv4ggHZjRNR8jBkJmYs3hpX_ZFlCo3mt4cXLPug43qb0GLNwGwWJMESl-esPpW3ZnOX41d0fI5HNqrMylqXIug.mp4#t=0.001" controls preload="metadata" playsinline></video>
       </div>
       <div class="video-item reveal-scale delay-4">
-        <video src="../videos/AQPmvGKSoveZWhtsfE5YCCCKPnPtzW70kald2VluWC0Crco8oo7zqR6HeSm3ds-BnnyRi_qge1gMmQM5_qBr2x1kergwq2nzTgikOcVpDEl12Q.mp4" controls preload="metadata" playsinline></video>
+        <video src="../videos/AQPmvGKSoveZWhtsfE5YCCCKPnPtzW70kald2VluWC0Crco8oo7zqR6HeSm3ds-BnnyRi_qge1gMmQM5_qBr2x1kergwq2nzTgikOcVpDEl12Q.mp4#t=0.001" controls preload="metadata" playsinline></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BEFORE & AFTER ═══════════ -->
+<section class="section before-after-section" id="before-after">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Before &amp; After</span>
+      <h2 class="section-title">See the <em>Transformation</em></h2>
+      <p class="section-subtitle">Real results from our cleaning sessions — swipe through to see the difference.</p>
+    </div>
+    <div class="videos-grid">
+      <div class="video-item reveal-scale delay-1">
+        <iframe src="https://www.youtube.com/embed/kda-F2xTu-o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-item reveal-scale delay-2">
+        <iframe src="https://www.youtube.com/embed/m0GKZ7cD-p0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-item reveal-scale delay-3">
+        <iframe src="https://www.youtube.com/embed/JjZbNXXMcgM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-item reveal-scale delay-4">
+        <iframe src="https://www.youtube.com/embed/aYZdeoFHHS4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-item reveal-scale delay-1">
+        <iframe src="https://www.youtube.com/embed/ix9KX1PCqak" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-item reveal-scale delay-2">
+        <iframe src="https://www.youtube.com/embed/AO2y2a5OFY4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-item reveal-scale delay-3">
+        <iframe src="https://www.youtube.com/embed/_n_Ke2wp5lI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>
